@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b2948">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<script src="theme.js"></script>
+<script src="analytics.js" defer></script>
 <meta name="description" content="NSTC Classes के अक्सर पूछे जाने वाले सवाल: एडमिशन, कक्षा, बोर्ड, फीस, बैच का समय, AI Teacher और संपर्क।">
 <link rel="canonical" href="https://shivamdigitalseva.github.io/nstc-classes/faq.html">
 <meta property="og:type" content="website">
@@ -40,12 +44,27 @@ footer{background:#071d34;color:#dce8f5;text-align:center;padding:22px 16px;font
 footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-bottom:10px}
 footer a{color:#fff;text-decoration:none;font-weight:700}footer a:hover{color:var(--gold)}
 @media(max-width:480px){article{padding:20px 16px}.brand strong{font-size:12px}.right a.home{display:none}}
+
+html[data-theme="dark"]{--bg:#0c1624;color-scheme:dark}
+html[data-theme="dark"] body{color:#e6eef7}
+html[data-theme="dark"] article{background:#14263b;border-color:#243b57}
+html[data-theme="dark"] h1,html[data-theme="dark"] h2,html[data-theme="dark"] .faq summary{color:#dbe9f8}
+html[data-theme="dark"] p,html[data-theme="dark"] li{color:#c9d8e8}
+html[data-theme="dark"] .upd{color:#a3b6ca}
+html[data-theme="dark"] a{color:#7dbbf0}
+html[data-theme="dark"] .btn,html[data-theme="dark"] .btn.alt,html[data-theme="dark"] .lang{color:inherit}
+html[data-theme="dark"] .btn{color:#17243a}
+html[data-theme="dark"] .btn.alt{background:#2c5d8a;color:#fff}
+html[data-theme="dark"] .faq details{background:#102033;border-color:#243b57}
+html[data-theme="dark"] .map-box{border-color:#243b57}
+html[data-theme="dark"] footer a{color:#fff}
+.right{flex-wrap:nowrap}
 </style>
 </head>
 <body data-title-en="Frequently Asked Questions" data-title-hi="अक्सर पूछे जाने वाले सवाल">
 <header><div class="container nav">
  <a class="brand" href="index.html"><img src="images/logo.png" alt="NSTC Classes logo"><span><strong>NO.1 SCIENCE TEACHING CENTRE</strong><small>NSTC CLASSES</small></span></a>
- <div class="right"><a class="home" href="index.html" data-en="Home" data-hi="होम">होम</a><button class="lang" id="langBtn" type="button">English</button></div>
+ <div class="right"><a class="home" href="index.html" data-en="Home" data-hi="होम">होम</a><button class="lang" id="themeBtn" type="button" aria-label="Dark mode / डार्क मोड">🌙</button><button class="lang" id="langBtn" type="button">English</button></div>
 </div></header>
 <main><div class="container"><article>
 <h1 data-en="Frequently Asked Questions" data-hi="अक्सर पूछे जाने वाले सवाल">अक्सर पूछे जाने वाले सवाल</h1>

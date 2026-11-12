@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b2948">
 <meta name="description" content="NSTC Classes (No.1 Science Teaching Centre): coaching for classes 6 to 12, Bihar Board and CBSE, all subjects. See batch timings, fees, notices and send an admission enquiry on WhatsApp.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<script src="theme.js"></script>
+<script src="analytics.js" defer></script>
 <link rel="canonical" href="https://shivamdigitalseva.github.io/nstc-classes/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NSTC Classes">
@@ -109,6 +113,27 @@ table.fee td:first-child{font-weight:700;color:var(--navy)}
 .nstc-chip:hover{background:#12634b;color:#fff}
 #nstc-ai-new{background:transparent;border:1px solid #ffffff70;color:#fff;border-radius:8px;font-size:11px;padding:4px 8px;cursor:pointer;margin-right:6px}
 .foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-bottom:10px}.foot-links a{color:#fff;text-decoration:none;font-weight:700}.foot-links a:hover{color:var(--gold)}
+
+/* --- Dark mode --- */
+html[data-theme="dark"]{--bg:#0c1624;--ink:#e6eef7;--muted:#a3b6ca;color-scheme:dark}
+html[data-theme="dark"] .section-head h2,html[data-theme="dark"] .card h3,html[data-theme="dark"] .teacher-info h3,html[data-theme="dark"] .contact-line b,html[data-theme="dark"] .notice-item b,html[data-theme="dark"] .faq summary{color:#dbe9f8}
+html[data-theme="dark"] .card,html[data-theme="dark"] .table-wrap,html[data-theme="dark"] .notice-item,html[data-theme="dark"] .faq details,html[data-theme="dark"] .map-box{background:#14263b;border-color:#243b57}
+html[data-theme="dark"] .course-icon,html[data-theme="dark"] .contact-icon{background:#1d3550}
+html[data-theme="dark"] .notice,html[data-theme="dark"] .notice-date{background:#2b2410;color:#f3dca0}
+html[data-theme="dark"] #teachers{background:#101e30!important}
+html[data-theme="dark"] table.fee td{border-color:#243b57}
+html[data-theme="dark"] table.fee tr:nth-child(even) td{background:#102033}
+html[data-theme="dark"] table.fee td:first-child{color:#dbe9f8}
+html[data-theme="dark"] .contact-line{border-color:#243b57}
+html[data-theme="dark"] .phone,html[data-theme="dark"] .contact-line a{color:#7dbbf0}
+html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="dark"] textarea{background:#0f2338;color:#e6eef7;border-color:#2b4668}
+html[data-theme="dark"] #nstc-ai-panel,html[data-theme="dark"] #nstc-ai-form,html[data-theme="dark"] #nstc-ai-note{background:#14263b;border-color:#243b57}
+html[data-theme="dark"] #nstc-ai-messages{background:#0c1624}
+html[data-theme="dark"] .nstc-ai-bot{background:#14263b;border-color:#243b57;color:#e6eef7}
+html[data-theme="dark"] #nstc-ai-input{background:#0f2338;color:#e6eef7;border-color:#2b4668}
+html[data-theme="dark"] #nstc-ai-note{color:#a3b6ca}
+html[data-theme="dark"] .nstc-chip{background:#14263b;color:#8fe0c0;border-color:#2f8f6f}
+#themeBtn{padding:7px 11px}
 </style>
 </head>
 <body>
@@ -128,6 +153,7 @@ table.fee td:first-child{font-weight:700;color:var(--navy)}
    <a href="#admission" data-en="Admission" data-hi="प्रवेश">Admission</a>
    <a href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
    <button class="lang" id="langBtn" type="button">हिंदी</button>
+   <button class="lang" id="themeBtn" type="button" aria-label="Dark mode / डार्क मोड">🌙</button>
   </nav>
  </div>
 </header>
