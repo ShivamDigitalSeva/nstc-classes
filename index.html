@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b2948">
+<meta name="description" content="NSTC Classes - No.1 Science Teaching Centre. Classes 6th to 12th, Bihar Board and CBSE, all subjects.">
+<title>NSTC Classes | No.1 Science Teaching Centre</title>
+<style>
+:root{--navy:#0b2948;--navy2:#123e65;--green:#12634b;--gold:#f5bd3d;--ink:#17283d;--muted:#63748a;--bg:#f4f7fb;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+a{color:inherit}.container{width:min(1120px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(11,41,72,.97);box-shadow:0 4px 20px #061a3030;backdrop-filter:blur(10px)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;color:white;text-decoration:none;min-width:0}
+.brand img{width:53px;height:53px;object-fit:contain;background:#fff;border-radius:12px;padding:3px}
+.brand strong{display:block;font-size:16px;line-height:1.25;letter-spacing:.3px}
+.brand small{display:block;color:#f5c64f;font-size:11px;letter-spacing:1.2px}
+nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:700}
+nav a:hover{color:var(--gold)}
+.lang{border:1px solid #ffffff70;color:#fff;background:#ffffff12;border-radius:30px;padding:8px 13px;cursor:pointer;font-weight:700}
+.hero{position:relative;overflow:hidden;color:white;text-align:center;padding:86px 18px 78px;background:linear-gradient(120deg,#09233fee,#145b62dd),url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #ffffff22;border-radius:50%;right:-130px;top:-170px}
+.hero-inner{position:relative;z-index:1;max-width:820px;margin:auto}
+.logo-large{width:112px;height:112px;object-fit:contain;background:#fff;border-radius:24px;padding:7px;box-shadow:0 12px 35px #0003;margin-bottom:17px}
+.tag{display:inline-block;border:1px solid #ffffff75;background:#ffffff16;border-radius:30px;padding:6px 15px;font-size:12px;font-weight:700;letter-spacing:.5px}
+h1{font-size:clamp(35px,6vw,62px);line-height:1.08;margin:17px 0 12px;letter-spacing:.5px}
+.hero p{font-size:17px;max-width:700px;margin:0 auto 24px;color:#edf5ff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:0;border-radius:9px;padding:12px 19px;font-weight:800;cursor:pointer;background:var(--gold);color:#17243a;margin:4px;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.btn.outline{background:transparent;border:1px solid #fff;color:#fff}
+.section{padding:64px 0}
+.section-head{text-align:center;margin-bottom:30px}
+.section-head h2{font-size:clamp(26px,4vw,34px);color:var(--navy);margin:0 0 6px}
+.section-head p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:19px}
+.card{background:#fff;border:1px solid #e6edf5;border-radius:17px;padding:23px;box-shadow:0 8px 26px #102b500d}
+.course-icon{width:48px;height:48px;border-radius:14px;background:#eaf3fc;display:grid;place-items:center;font-size:25px}
+.card h3{color:var(--navy);margin:12px 0 6px;font-size:19px}
+.card p{color:var(--muted);margin:0}
+.notice{margin-top:20px;padding:15px 18px;border-left:4px solid var(--gold);border-radius:9px;background:#fff8e5;color:#594313;font-size:14px}
+.teacher-card{padding:0;overflow:hidden;text-align:center}
+.teacher-photo{width:100%;height:245px;object-fit:cover;object-position:center 25%;display:block;background:#e7edf4}
+.teacher-info{padding:17px 15px 20px}
+.teacher-info h3{margin:0 0 2px}
+.teacher-info p{font-size:13px;margin:0 0 10px}
+.phone{display:inline-block;color:#1769aa;text-decoration:none;font-weight:800;font-size:14px}
+.phone:hover{text-decoration:underline}
+.admission{background:linear-gradient(135deg,#0b2948,#155879);color:#fff;border-radius:20px;padding:32px;box-shadow:0 15px 35px #102b5020}
+.admission h2{margin:0 0 5px;font-size:29px}.admission>p{color:#e3edf7;margin:0 0 20px}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+input,select,textarea{width:100%;padding:13px 14px;border:1px solid #d6e0eb;border-radius:9px;font:inherit;background:#fff;color:#17243a;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#67a9d8;box-shadow:0 0 0 3px #67a9d822}
+textarea{grid-column:1/-1;min-height:92px;resize:vertical}
+form button{justify-self:start}
+.form-note{font-size:12px!important;margin:12px 0 0!important;color:#d7e5f2!important}
+.contact-card{max-width:800px;margin:auto}
+.contact-line{display:flex;gap:13px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid #edf1f6}
+.contact-line:last-child{border:0}
+.contact-icon{width:38px;height:38px;flex:none;border-radius:11px;background:#eaf3fc;display:grid;place-items:center}
+.contact-line b{display:block;color:var(--navy)}
+.contact-line a{color:#1769aa;text-decoration:none;font-weight:700}
+footer{background:#071d34;color:#dce8f5;text-align:center;padding:25px 16px;font-size:13px}
+footer strong{color:#fff}
+@media(max-width:760px){.nav{padding:10px 0;align-items:flex-start;flex-direction:column}.brand img{width:46px;height:46px}nav{gap:10px 14px}nav a{font-size:12px}.hero{padding:62px 16px}.section{padding:47px 0}.teacher-photo{height:230px}.admission{padding:23px 17px}}
+@media(max-width:480px){.brand strong{font-size:14px}nav{width:100%}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{padding:16px}.teacher-card{padding:0}.teacher-photo{height:185px}.teacher-info{padding:13px 8px 16px}.teacher-info h3{font-size:15px}.phone{font-size:12px}.card h3{font-size:16px}.card p{font-size:13px}form{grid-template-columns:1fr}textarea{grid-column:auto}.hero p{font-size:15px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="container nav">
+  <a class="brand" href="#home">
+   <img src="images/logo.png" alt="NSTC Classes logo">
+   <span><strong>NO.1 SCIENCE TEACHING CENTRE</strong><small>NSTC CLASSES</small></span>
+  </a>
+  <nav>
+   <a href="#home" data-en="Home" data-hi="होम">Home</a>
+   <a href="#courses" data-en="Courses" data-hi="कोर्स">Courses</a>
+   <a href="#teachers" data-en="Teachers" data-hi="शिक्षक">Teachers</a>
+   <a href="#admission" data-en="Admission" data-hi="प्रवेश">Admission</a>
+   <a href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+   <button class="lang" id="langBtn" type="button">हिंदी</button>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-inner">
+  <img class="logo-large" src="images/logo.png" alt="NSTC Science Teaching Centre logo">
+  <div class="tag" data-en="BIHAR BOARD & CBSE" data-hi="बिहार बोर्ड और CBSE">BIHAR BOARD &amp; CBSE</div>
+  <h1>NO.1 SCIENCE<br>TEACHING CENTRE</h1>
+  <p data-en="Quality education for a brighter future. Classes 6th to 12th • All Subjects • Hindi and English medium support."
+     data-hi="उज्ज्वल भविष्य के लिए गुणवत्तापूर्ण शिक्षा। कक्षा 6वीं से 12वीं तक • सभी विषय • हिंदी और अंग्रेज़ी माध्यम में सहयोग।">Quality education for a brighter future. Classes 6th to 12th • All Subjects • Hindi and English medium support.</p>
+  <a class="btn" href="#admission" data-en="Enquire for Admission" data-hi="प्रवेश के लिए पूछें">Enquire for Admission</a>
+  <a class="btn outline" href="#teachers" data-en="Meet Our Teachers" data-hi="हमारे शिक्षकों से मिलें">Meet Our Teachers</a>
+ </div>
+</section>
+
+<section class="section" id="courses">
+ <div class="container">
+  <div class="section-head"><h2 data-en="Our Courses" data-hi="हमारे कोर्स">Our Courses</h2>
+   <p data-en="Learning support for school students" data-hi="स्कूली विद्यार्थियों के लिए पढ़ाई में सहयोग">Learning support for school students</p></div>
+  <div class="grid">
+   <article class="card"><div class="course-icon">📘</div><h3 data-en="Classes 6th–8th" data-hi="कक्षा 6वीं–8वीं">Classes 6th–8th</h3><p data-en="All subjects and strong foundations." data-hi="सभी विषय और मजबूत बुनियादी तैयारी।">All subjects and strong foundations.</p></article>
+   <article class="card"><div class="course-icon">📗</div><h3 data-en="Classes 9th–10th" data-hi="कक्षा 9वीं–10वीं">Classes 9th–10th</h3><p data-en="Bihar Board and CBSE preparation." data-hi="बिहार बोर्ड और CBSE की तैयारी।">Bihar Board and CBSE preparation.</p></article>
+   <article class="card"><div class="course-icon">🎓</div><h3 data-en="Classes 11th–12th" data-hi="कक्षा 11वीं–12वीं">Classes 11th–12th</h3><p data-en="All subjects with focused concept learning." data-hi="सभी विषयों की अवधारणाओं पर विशेष ध्यान।">All subjects with focused concept learning.</p></article>
+  </div>
+  <div class="notice" data-en="Boards: Bihar Board and CBSE | Classes: 6th to 12th | Subjects: All subjects. Contact the teachers for batch timings and fee details."
+   data-hi="बोर्ड: बिहार बोर्ड और CBSE | कक्षाएँ: 6वीं से 12वीं | विषय: सभी विषय। बैच के समय और फीस की जानकारी के लिए शिक्षकों से संपर्क करें।">Boards: Bihar Board and CBSE | Classes: 6th to 12th | Subjects: All subjects. Contact the teachers for batch timings and fee details.</div>
+ </div>
+</section>
+
+<section class="section" id="teachers" style="background:#edf3f9">
+ <div class="container">
+  <div class="section-head"><h2 data-en="Meet Our Teachers" data-hi="हमारे शिक्षक">Meet Our Teachers</h2>
+   <p data-en="Contact our teaching team for course and admission information." data-hi="कोर्स और प्रवेश की जानकारी के लिए शिक्षकों से संपर्क करें।">Contact our teaching team for course and admission information.</p></div>
+  <div class="grid">
+   <article class="card teacher-card"><img class="teacher-photo" src="images/nooruallah-sir.png" alt="Nooruallah Sir"><div class="teacher-info"><h3>Nooruallah Sir</h3><p data-en="Teacher" data-hi="शिक्षक">Teacher</p><a class="phone" href="tel:7992356481">79923 56481</a></div></article>
+   <article class="card teacher-card"><img class="teacher-photo" src="images/mumtaj-sir.png" alt="Mumtaj Sir"><div class="teacher-info"><h3>Mumtaj Sir</h3><p data-en="Teacher" data-hi="शिक्षक">Teacher</p><a class="phone" href="tel:8709882972">87098 82972</a></div></article>
+   <article class="card teacher-card"><img class="teacher-photo" src="images/ekram-sir.png" alt="Ekram Sir"><div class="teacher-info"><h3>Ekram Sir</h3><p data-en="Teacher" data-hi="शिक्षक">Teacher</p><a class="phone" href="tel:6203695198">62036 95198</a></div></article>
+   <article class="card teacher-card"><img class="teacher-photo" src="images/ashok-sir.png" alt="Ashok Sir"><div class="teacher-info"><h3>Ashok Sir</h3><p data-en="Teacher" data-hi="शिक्षक">Teacher</p><a class="phone" href="tel:7717795942">77177 95942</a></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="admission">
+ <div class="container">
+  <div class="admission">
+   <h2 data-en="Admission Enquiry" data-hi="प्रवेश के लिए पूछताछ">Admission Enquiry</h2>
+   <p data-en="Fill in the details. WhatsApp will open with your enquiry message ready to send."
+      data-hi="जानकारी भरें। आपका पूछताछ संदेश तैयार होकर WhatsApp में खुलेगा।">Fill in the details. WhatsApp will open with your enquiry message ready to send.</p>
+   <form id="admissionForm">
+    <input id="student" required maxlength="70" placeholder="Student name / विद्यार्थी का नाम">
+    <input id="mobile" required inputmode="numeric" type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number / 10 अंकों का मोबाइल नंबर">
+    <select id="className" required><option value="" data-en="Select class / कक्षा चुनें" data-hi="कक्षा चुनें">Select class / कक्षा चुनें</option><option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option><option>11th</option><option>12th</option></select>
+    <select id="board" required><option value="" data-en="Select board / बोर्ड चुनें" data-hi="बोर्ड चुनें">Select board / बोर्ड चुनें</option><option>Bihar Board</option><option>CBSE</option></select>
+    <textarea id="message" placeholder="Message (optional) / संदेश (वैकल्पिक)"></textarea>
+    <button class="btn" type="submit" data-en="Send Enquiry on WhatsApp" data-hi="WhatsApp पर पूछताछ भेजें">Send Enquiry on WhatsApp</button>
+   </form>
+   <p class="form-note" data-en="This form opens WhatsApp; the website does not store your submitted details."
+      data-hi="यह फॉर्म WhatsApp खोलता है; वेबसाइट आपकी जानकारी सेव नहीं करती।">This form opens WhatsApp; the website does not store your submitted details.</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="contact" style="padding-top:20px">
+ <div class="container">
+  <div class="section-head"><h2 data-en="Contact & Location" data-hi="संपर्क और पता">Contact &amp; Location</h2>
+   <p data-en="We look forward to helping you learn." data-hi="आपकी पढ़ाई में सहयोग करने के लिए तत्पर हैं।">We look forward to helping you learn.</p></div>
+  <div class="card contact-card">
+   <div class="contact-line"><span class="contact-icon">📍</span><div><b data-en="Address" data-hi="पता">Address</b>Amwa Bairagi Tola, Mother Teresa Public School</div></div>
+   <div class="contact-line"><span class="contact-icon">📞</span><div><b data-en="Call our teachers" data-hi="शिक्षकों को कॉल करें">Call our teachers</b>
+    <a href="tel:7992356481">Nooruallah Sir</a> · <a href="tel:8709882972">Mumtaj Sir</a> · <a href="tel:6203695198">Ekram Sir</a> · <a href="tel:7717795942">Ashok Sir</a></div></div>
+   <div class="contact-line"><span class="contact-icon">🏫</span><div><b data-en="Boards & Classes" data-hi="बोर्ड और कक्षाएँ">Boards &amp; Classes</b><span data-en="Bihar Board & CBSE | Classes 6th–12th | All Subjects" data-hi="बिहार बोर्ड और CBSE | कक्षा 6वीं–12वीं | सभी विषय">Bihar Board &amp; CBSE | Classes 6th–12th | All Subjects</span></div></div>
+  </div>
+ </div>
+</section>
+</main>
+<footer>© <span id="year"></span> <strong>NO.1 SCIENCE TEACHING CENTRE (NSTC CLASSES)</strong><br><span data-en="All rights reserved." data-hi="सर्वाधिकार सुरक्षित।">All rights reserved.</span></footer>
+
+<script>
+let language='en';
+const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{
+ language=language==='en'?'hi':'en';
+ document.documentElement.lang=language;
+ document.querySelectorAll('[data-en]').forEach(el=>{
+  el.textContent=el.dataset[language]||el.dataset.en;
+ });
+ document.querySelectorAll('[data-placeholder-en]').forEach(el=>{
+  el.placeholder=el.dataset['placeholder'+(language==='en'?'En':'Hi')];
+ });
+ langBtn.textContent=language==='en'?'हिंदी':'English';
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('admissionForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const student=document.getElementById('student').value.trim();
+ const mobile=document.getElementById('mobile').value.trim();
+ const cls=document.getElementById('className').value;
+ const board=document.getElementById('board').value;
+ const message=document.getElementById('message').value.trim();
+ if(!/^[0-9]{10}$/.test(mobile)){alert(language==='hi'?'कृपया 10 अंकों का मोबाइल नंबर भरें।':'Please enter a valid 10-digit mobile number.');return;}
+ const text=`Admission Enquiry - NO.1 SCIENCE TEACHING CENTRE\nStudent: ${student}\nMobile: ${mobile}\nClass: ${cls}\nBoard: ${board}\nMessage: ${message||'Not provided'}`;
+ window.open('https://wa.me/917992356481?text='+encodeURIComponent(text),'_blank','noopener');
+});
+</script>
+</body>
+</html>
