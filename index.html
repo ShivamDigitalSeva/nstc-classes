@@ -188,5 +188,90 @@ document.getElementById('admissionForm').addEventListener('submit',e=>{
  window.open('https://wa.me/917992356481?text='+encodeURIComponent(text),'_blank','noopener');
 });
 </script>
+
+<!-- NSTC AI Teacher Chat Widget -->
+<style>
+#nstc-ai-launch{position:fixed;right:18px;bottom:18px;z-index:9998;border:0;border-radius:999px;background:#12634b;color:#fff;padding:14px 18px;font-weight:800;box-shadow:0 8px 25px #0003;cursor:pointer}
+#nstc-ai-panel{position:fixed;right:16px;bottom:82px;z-index:9999;width:min(370px,calc(100vw - 28px));height:min(540px,72vh);background:#fff;border:1px solid #dce5ee;border-radius:18px;box-shadow:0 15px 50px #061a3040;display:none;overflow:hidden;font-family:Arial,sans-serif}
+#nstc-ai-panel.open{display:flex;flex-direction:column}
+#nstc-ai-head{background:#0b2948;color:#fff;padding:14px 15px;display:flex;align-items:center;justify-content:space-between}
+#nstc-ai-head strong{display:block}#nstc-ai-head small{color:#d6e8f5}
+#nstc-ai-close{background:transparent;border:0;color:#fff;font-size:24px;cursor:pointer}
+#nstc-ai-messages{padding:13px;overflow:auto;flex:1;background:#f4f7fb}
+.nstc-ai-msg{max-width:88%;padding:10px 12px;border-radius:13px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.5}
+.nstc-ai-bot{background:#fff;border:1px solid #e3eaf1;color:#17243a}
+.nstc-ai-user{background:#12634b;color:#fff;margin-left:auto}
+#nstc-ai-form{display:flex;gap:7px;padding:10px;border-top:1px solid #e5ebf2;background:#fff}
+#nstc-ai-input{min-width:0;flex:1;border:1px solid #ccd7e3;border-radius:10px;padding:11px;font-size:14px}
+#nstc-ai-send{border:0;border-radius:10px;background:#12634b;color:#fff;padding:0 15px;font-weight:700}
+#nstc-ai-send:disabled{opacity:.55}
+#nstc-ai-note{font-size:10px;color:#64748b;padding:0 12px 9px;background:#fff}
+</style>
+<button id="nstc-ai-launch" type="button" aria-label="Open NSTC AI Teacher">🤖 Ask NSTC AI</button>
+<section id="nstc-ai-panel" aria-label="NSTC AI Teacher chat">
+ <div id="nstc-ai-head">
+  <div><strong>🤖 NSTC AI Teacher</strong><small>Study • General Knowledge • Questions</small></div>
+  <button id="nstc-ai-close" type="button" aria-label="Close">×</button>
+ </div>
+ <div id="nstc-ai-messages" aria-live="polite">
+  <div class="nstc-ai-msg nstc-ai-bot">नमस्ते विद्यार्थी! 👋 मैं NSTC AI Teacher हूँ। पढ़ाई, सामान्य ज्ञान और दूसरे सवाल पूछिए।</div>
+ </div>
+ <form id="nstc-ai-form">
+  <input id="nstc-ai-input" maxlength="1000" autocomplete="off" placeholder="अपना सवाल लिखें..." required>
+  <button id="nstc-ai-send" type="submit">भेजें</button>
+ </form>
+ <div id="nstc-ai-note">AI के जवाबों में गलती हो सकती है। जरूरी जानकारी किताब/शिक्षक से जाँचें। निजी जानकारी न भेजें।</div>
+</section>
+<script>
+(() => {
+  // Cloudflare Worker deploy करने के बाद नीचे अपना Worker URL डालें।
+  const NSTC_AI_API_URL = "PASTE_YOUR_CLOUDFLARE_WORKER_URL_HERE";
+  const panel = document.getElementById("nstc-ai-panel");
+  const messages = document.getElementById("nstc-ai-messages");
+  const form = document.getElementById("nstc-ai-form");
+  const input = document.getElementById("nstc-ai-input");
+  const send = document.getElementById("nstc-ai-send");
+  document.getElementById("nstc-ai-launch").addEventListener("click", () => panel.classList.add("open"));
+  document.getElementById("nstc-ai-close").addEventListener("click", () => panel.classList.remove("open"));
+  const addMessage = (text, who) => {
+    const div = document.createElement("div");
+    div.className = "nstc-ai-msg " + (who === "user" ? "nstc-ai-user" : "nstc-ai-bot");
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  };
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const question = input.value.trim();
+    if (!question) return;
+    if (NSTC_AI_API_URL.includes("PASTE_YOUR")) {
+      addMessage("AI अभी सेटअप नहीं हुआ है। पहले Cloudflare Worker बनाकर उसका URL इस कोड में डालें।", "bot");
+      return;
+    }
+    addMessage(question, "user");
+    input.value = "";
+    send.disabled = true;
+    const waiting = addMessage("जवाब तैयार हो रहा है…", "bot");
+    try {
+      const response = await fetch(NSTC_AI_API_URL, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({question})
+      });
+      const data = await response.json();
+      waiting.textContent = response.ok ? (data.answer || "जवाब नहीं मिला। फिर कोशिश करें।") : (data.error || "अभी जवाब नहीं मिल पाया।");
+    } catch (error) {
+      waiting.textContent = "कनेक्शन में समस्या है। थोड़ी देर बाद फिर कोशिश करें।";
+    } finally {
+      send.disabled = false;
+      input.focus();
+      messages.scrollTop = messages.scrollHeight;
+    }
+  });
+})();
+</script>
+<!-- End NSTC AI Teacher Chat Widget -->
+
 </body>
 </html>
