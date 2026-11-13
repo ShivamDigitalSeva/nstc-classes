@@ -106,6 +106,9 @@ html[data-theme="dark"] footer a{color:#fff}
   var CATS = [['books', 'पुस्तकें', 'Books'], ['notes', 'नोट्स', 'Notes'], ['papers', 'मॉडल पेपर और पिछले साल के प्रश्न', 'Model and previous year papers'], ['qbank', 'प्रश्न बैंक', 'Question bank']];
   var MID = [['hindi', 'हिंदी', 'Hindi'], ['english', 'अंग्रेज़ी', 'English'], ['maths', 'गणित', 'Mathematics'], ['science', 'विज्ञान', 'Science'], ['social-science', 'सामाजिक विज्ञान', 'Social Science'], ['sanskrit', 'संस्कृत', 'Sanskrit']];
   var SEN = [['physics', 'भौतिकी', 'Physics'], ['chemistry', 'रसायन विज्ञान', 'Chemistry'], ['maths', 'गणित', 'Mathematics'], ['biology', 'जीव विज्ञान', 'Biology'], ['english', 'अंग्रेज़ी', 'English'], ['hindi', 'हिंदी', 'Hindi'], ['accountancy', 'लेखाशास्त्र', 'Accountancy'], ['business-studies', 'व्यवसाय अध्ययन', 'Business Studies'], ['economics', 'अर्थशास्त्र', 'Economics'], ['history', 'इतिहास', 'History'], ['geography', 'भूगोल', 'Geography'], ['political-science', 'राजनीति विज्ञान', 'Political Science'], ['sociology', 'समाजशास्त्र', 'Sociology']];
+  var SCI_SUB = [['physics', 'भौतिकी', 'Physics'], ['chemistry', 'रसायन विज्ञान', 'Chemistry'], ['biology', 'जीव विज्ञान', 'Biology']];
+  var SST_LOW = [['history', 'इतिहास', 'History'], ['geography', 'भूगोल', 'Geography'], ['civics', 'नागरिक शास्त्र', 'Civics']];
+  var SST_HIGH = [['history', 'इतिहास', 'History'], ['geography', 'भूगोल', 'Geography'], ['political-science', 'राजनीति विज्ञान', 'Political Science'], ['economics', 'अर्थशास्त्र', 'Economics']];
   var root = document.getElementById('sm');
   var renderToken = 0;
 
@@ -121,6 +124,14 @@ html[data-theme="dark"] footer a{color:#fff}
   function href(p) { return '#' + p.map(encodeURIComponent).join('/'); }
   function clsNum(slug) { var m = /^class-(\d+)$/.exec(slug || ''); return m ? parseInt(m[1], 10) : 0; }
   function subjectsFor(slug) { return clsNum(slug) >= 11 ? SEN : MID; }
+  function subSubjects(p) {
+    if (p.length !== 3) return [];
+    var n = clsNum(p[1]);
+    if (n < 6 || n > 10) return [];
+    if (p[2] === 'science') return SCI_SUB;
+    if (p[2] === 'social-science') return n >= 9 ? SST_HIGH : SST_LOW;
+    return [];
+  }
   function clean(name, isFile) {
     var n = String(name);
     if (isFile) n = n.replace(/\.[A-Za-z0-9]{2,5}$/, '');
@@ -130,6 +141,7 @@ html[data-theme="dark"] footer a{color:#fff}
     if (i === 0) { var c = find(CATS, p[0]); return c ? pick(c) : p[0]; }
     if (i === 1) { var n = clsNum(p[1]); return n ? TXT[lang()].cls + n : p[1]; }
     if (i === 2) { var s = find(subjectsFor(p[1]), p[2]); return s ? pick(s) : p[2]; }
+    if (i === 3) { var ss = find(subSubjects(p.slice(0, 3)), p[3]); if (ss) return pick(ss); }
     return clean(p[i], false);
   }
   function validStatic(p) {
@@ -212,18 +224,20 @@ html[data-theme="dark"] footer a{color:#fff}
       draw(head, items);
       return;
     }
-    draw(head, ['<p class="sm-note">' + esc(t.loading) + '</p>']);
+    var subs3 = subSubjects(p), statics = [];
+    subs3.forEach(function (x) { statics.push(folder(p.concat(x[0]), pick(x))); });
+    draw(head, statics.length ? statics : ['<p class="sm-note">' + esc(t.loading) + '</p>']);
     load(ROOT + '/' + p.join('/')).then(function (list) {
       if (token !== renderToken) return;
-      var dirs = list.filter(function (x) { return x.type === 'dir'; }).sort(natural);
+      var dirs = list.filter(function (x) { return x.type === 'dir' && !find(subs3, x.name); }).sort(natural);
       var files = list.filter(function (x) { return x.type === 'file'; }).sort(natural);
-      var out = [];
+      var out = statics.slice();
       dirs.forEach(function (d) { out.push(folder(p.concat(d.name), clean(d.name, false))); });
       files.forEach(function (f) { out.push(file(f.path, f.name)); });
       draw(head, out);
     }).catch(function () {
       if (token !== renderToken) return;
-      draw(head, [], t.err);
+      if (statics.length) draw(head, statics); else draw(head, [], t.err);
     });
   }
 
