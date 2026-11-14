@@ -126,6 +126,7 @@ html[data-theme="dark"] footer a{color:#fff}
   function subjectsFor(slug) { return clsNum(slug) >= 11 ? SEN : MID; }
   function subSubjects(p) {
     if (p.length !== 3) return [];
+    if (p[0] === 'papers' || p[0] === 'qbank') return []; // मॉडल पेपर और प्रश्न बैंक पूरे विषय के होते हैं, उप-विषय नहीं
     var n = clsNum(p[1]);
     if (n < 6 || n > 10) return [];
     if (p[2] === 'science') return SCI_SUB;
@@ -135,7 +136,7 @@ html[data-theme="dark"] footer a{color:#fff}
   function clean(name, isFile) {
     var n = String(name);
     if (isFile) n = n.replace(/\.[A-Za-z0-9]{2,5}$/, '');
-    return n.replace(/^\d{1,2}[-_]/, '').replace(/_+/g, ' ').trim();
+    return n.replace(/^\d{1,2}[-_]/, '').replace(/[-_]+/g, ' ').trim();
   }
   function label(p, i) {
     if (i === 0) { var c = find(CATS, p[0]); return c ? pick(c) : p[0]; }
